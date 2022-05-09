@@ -1,4 +1,5 @@
 import csv
+from collections import Counter
 # Sin pandas
 '''
 1. Extraer del fichero de alojamientos una lista con todos los alojamientos, 
@@ -43,13 +44,13 @@ for x in range(len(lista_aloj)):
 '''
 def numdistrito(lista_aloj):
     l_d = [] 
-  
     for a in lista_aloj:
         distrito = a['distrito']
         l_d.append(distrito)
-    print(l_d)
-
+    n = Counter(l_d)
+    return n
 num = numdistrito(lista_aloj)
+print('El número de cada distrito es: ' + str(num))
 
 '''
 3. Crear una función que reciba la lista de alojamientos y un número de ocupantes y
