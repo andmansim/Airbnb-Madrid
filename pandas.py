@@ -11,7 +11,7 @@ Añadir al data frame nuevas variables con el coste mínimo por noche y por pers
 (que incluya los gastos de limpieza).
 '''
 
-df = pd.read_csv('madrid-airbnb-listings-small.csv', delimiter ='\t', encoding = 'UTF-8')
+#df = pd.read_csv('madrid-airbnb-listings-small.csv', delimiter ='\t', encoding = 'UTF-8')
 
 
 '''df.rename(columns= {'id': 'id_aloj', 'host_id': 'id_anfi', 'listing_url': 'lista_url', 

@@ -1,5 +1,8 @@
 import csv
 from collections import Counter
+
+import pandas as pd
+d = pd.read_csv('madrid-airbnb-listings-small.csv', sep='\t', encoding='UTF-8')
 # Sin pandas
 '''
 1. Extraer del fichero de alojamientos una lista con todos los alojamientos, 
