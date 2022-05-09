@@ -50,3 +50,22 @@ def numdistrito(lista_aloj):
     for c in range(len(l_d)):
         if l_d[c] == l_d[c + 1]:
             cont = cont + 1
+
+'''
+3. Crear una función que reciba la lista de alojamientos y un número de ocupantes y
+devuelva la lista de alojamientos con un número de plazas mayor o igual que el número de ocupantes.
+'''
+
+
+'''
+4. Crear una función que reciba la lista de alojamientos un distrito, y 
+devuelva los 10 alojamientos más baratos del distrito.
+'''
+
+'''
+5. Crear una función que reciba la lista de alojamientos y devuelva un diccionario con los anfitriones y 
+el número de alojamientos que posee cada uno.
+'''
+
+
+# Con pandas
