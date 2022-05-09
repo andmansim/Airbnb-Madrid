@@ -1,9 +1,7 @@
 import csv
 from collections import Counter
 
-import pandas as pd
 
-df = pd.read_csv('madrid.csv', sep='\t', encoding='UTF-8')
 # Sin pandas
 '''
 1. Extraer del fichero de alojamientos una lista con todos los alojamientos, 
