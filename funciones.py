@@ -31,8 +31,9 @@ def informacion():
     with open('madrid-airbnb-listings-small.csv', encoding='UTF-8') as file:
         leer = csv.DictReader(file, delimiter = '\t')
         
-    for i in leer:
-        lista.append(i)
+        for i in leer:
+            lista.append(i)
+        return lista
 
 lista_aloj = informacion()
 def modificacion(lista_aloj):
@@ -42,9 +43,16 @@ def modificacion(lista_aloj):
         a['distrito'] = a['neighbourhood_group_cleansed']
         a['precio'] = a['price']
         a['plazas'] = a['accommodates']   
+        
         nuevos = ['id_anfi', 'id_aloj', 'distrito', 'precio', 'plazas' ]
-        if a.keys not in nuevos:
-            del(a.keys)
+        
+        borrar = []
+
+        for b in a.keys():
+            if b not in nuevos:
+                borrar.append(b)
+        for c in borrar:        
+            del(a[c])
 
     print(lista_aloj)
     return lista_aloj
