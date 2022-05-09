@@ -47,9 +47,10 @@ def numdistrito(lista_aloj):
     for a in lista_aloj:
         distrito = a['distrito']
         l_d.append(distrito)
+    print(l_d)
 
 num = numdistrito(lista_aloj)
-print(num)
+
 '''
 3. Crear una función que reciba la lista de alojamientos y un número de ocupantes y
 devuelva la lista de alojamientos con un número de plazas mayor o igual que el número de ocupantes.
