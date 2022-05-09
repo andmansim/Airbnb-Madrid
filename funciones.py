@@ -1,4 +1,8 @@
 import csv
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
 # Sin pandas
 '''
 1. Extraer del fichero de alojamientos una lista con todos los alojamientos, 
@@ -18,8 +22,8 @@ def informacion():
 #Renombro y borramos los keys
 def modificacion(lista_aloj):
     for a in lista_aloj:
-        a['id_anfi'] = a['id']
-        a['id_aloj'] = a['host_id']
+        a['id_aloj'] = a['id']
+        a['id_anfi'] = a['host_id']
         a['distrito'] = a['neighbourhood_group_cleansed']
         a['precio'] = a['price']
         a['plazas'] = a['accommodates']   
@@ -43,14 +47,13 @@ for x in range(len(lista_aloj)):
 '''
 def numdistrito(lista_aloj):
     l_d = [] 
-    cont = 0
-    for a in range(len(lista_aloj)):
-        distrito = a.get('distrito')
+  
+    for a in lista_aloj:
+        distrito = a['distrito']
         l_d.append(distrito)
-    for c in range(len(l_d)):
-        if l_d[c] == l_d[c + 1]:
-            cont = cont + 1
 
+num = numdistrito(lista_aloj)
+print(num)
 '''
 3. Crear una función que reciba la lista de alojamientos y un número de ocupantes y
 devuelva la lista de alojamientos con un número de plazas mayor o igual que el número de ocupantes.
@@ -69,3 +72,19 @@ el número de alojamientos que posee cada uno.
 
 
 # Con pandas
+'''
+Preprocesar el fichero de alojamientos para crear un data frame con las variables id, host_id, listing_url, 
+room_type, neighbourhood_group_cleansed, price, cleaning_fee, accommodates, minimum_nights, 
+minimum_cost, review_scores_rating, latitude, longitude, is_location_exact. 
+Eliminar del data frame cualquier fila incompleta. 
+Añadir al data frame nuevas variables con el coste mínimo por noche y por persona ç
+(que incluya los gastos de limpieza).
+'''
+df = pd.read_csv('madrid-airbnb-listings-small.csv', encoding='UTF-8', delimiter='\t')
+df.rename(columns= {'id': 'id_aloj', 'host_id': 'id_anfi', 'listing_url': 'lista_url', 
+'room_type' : 'tipo_hab', 'neighbourhood_group_cleansed': 'distrito', 'price':'precio', 'cleaning_fee':'limpiar', 'accommodates': 'plazas',
+'minimum_nights': 'noches_min','minimum_cost': 'cost_min', 'review_scores_rating': 'comprobar_nota', 'latitude': 'latitud',
+'longitude': 'longitud', 'is_location_exact': 'localizacion_exact'}, inplace=True)
+df1 = df[['id_aloj','id_anfi', 'lista_url', 'tipo_hab', 'distrito', 'precio', 'limpiar', 'plazas', 'noches_min',
+          'cost_min', 'comprobar_nota', 'latitud', 'longitud', 'localizacion_exact']]
+print(df1)
