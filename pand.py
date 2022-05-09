@@ -1,3 +1,4 @@
+from locale import normalize
 import pandas as pd 
 import matplotlib.pyplot as plt
 
@@ -36,7 +37,13 @@ print(df1['precio_oer'])
 devuelva un diccionario con los tipos de alojamiento en ese distrito y
 el porcentaje de alojamientos de ese tipo.
 '''
-
+#Mirar y hacer
+def porcentaje(df, distritos):
+    if distritos in df['distrito']:
+        for i in distritos:
+            df[i].tipo_hab.value_counts(normalize=True) * 100
+            
+porcentaje(df, ['Centro', 'Salamanca'])
 '''
 3. Crear una función que reciba una lista de distritos y 
 devuelva un diccionario con el número de alojamientos que cada anfitrión ofrece en esos distrito, 
