@@ -23,7 +23,11 @@ df1= df1.dropna()
 
 df1['precio'] = df1.precio.str.replace(',', '.')
 df1['precio'] = df1.precio.str.replace('$', '')
-print(df['precio'])
+print(df['precio']) # Da error mirar pq
 df1['limpiar'] = df1.limpiar.str[1:].astype('float')
 print(df1['limpiar'])
+
+df1['precio_per'] = (df1['noches_min'] * df1['precio'] + df1['limpiar'])/(df1['noches_min'] + df1['plazas'])
+print('El precio por persona es:')
+print(df1['precio_oer'])
 
