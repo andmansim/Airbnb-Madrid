@@ -69,7 +69,7 @@ for x in range(len(lista_aloj)):
     print('\n')
 
 num = numdistrito(lista_aloj)
-print('*******************************************************************************************')
+print('***********************************************************************************************')
 print('El número de cada distrito es: ' + str(num))
 
 l_aloj = ocupantes(lista_aloj, 5)
