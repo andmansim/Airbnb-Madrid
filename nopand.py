@@ -69,14 +69,15 @@ for x in range(len(lista_aloj)):
     print('\n')
 
 num = numdistrito(lista_aloj)
+print('*******************************************************************************************')
 print('El número de cada distrito es: ' + str(num))
 
 l_aloj = ocupantes(lista_aloj, 5)
 print('\n')
+print('**********************************************************************************************')
 print('Los alojamientos disponibles son: ')
 for y in range(len(l_aloj)):
     print(l_aloj[y])
-    w = w + 1
     print('\n')
 
     
@@ -84,7 +85,29 @@ for y in range(len(l_aloj)):
 4. Crear una función que reciba la lista de alojamientos un distrito, y 
 devuelva los 10 alojamientos más baratos del distrito.
 '''
+def precio_aloj(lista_aloj, distrito):
+    l_d = []
+    for a in lista_aloj:
+        distritos = a['distrito']
+        if distritos == distrito:
+            l_d.append(a)
+            
+    def orden(dict): #función para ordenar según el precio
+        d = float(dict['precio'][1:])
+        return d
+    
+    r_a = sorted(l_d, key = orden) #se le pasa la lista y el key a ordenar
+    return r_a[:10]
 
+l_ranking = precio_aloj(lista_aloj, 'Centro')  
+print('\n')
+print('****************************************************************************') 
+print('Los 10 más barados del distrito son:')  
+for z in range(len(l_ranking)):
+    print(l_ranking[z])
+    print('\n')
+    
+    
 '''
 5. Crear una función que reciba la lista de alojamientos y devuelva un diccionario con los anfitriones y 
 el número de alojamientos que posee cada uno.
