@@ -22,15 +22,18 @@ df1 = df[['id_aloj','id_anfi', 'url', 'tipo_hab', 'distrito', 'precio', 'limpiar
 df1= df1.dropna()
 #reemplazar
 
-df1['precio'] = df1.precio.str.replace(',', '.')
-df1['precio'] = df1.precio.str.replace('$', '')
-print(df['precio']) # Da error mirar pq
-df1['limpiar'] = df1.limpiar.str[1:].astype('float')
-print(df1['limpiar'])
-
-df1['precio_per'] = (df1['noches_min'] * df1['precio'] + df1['limpiar'])/(df1['noches_min'] + df1['plazas'])
+df1['precio'] = df1['precio'].str.replace(',', '.')
+df1['precio'] = df1['precio'].str.replace('$', '').str[1:]
+df1['limpiar'] = df1['limpiar'].str[1:].astype('float')
+print((df1['noches_min'] + df1['plazas']).astype('float'))
+a = (df1['noches_min'] + df1['plazas']).astype('float')
+b = (df1['noches_min'] * df1['precio'])
+print((b/a))
+df1['precio_per'] = (b/a)
+print(df1['precio_per'])
+df1['precio_per'] = ((df1['noches_min'] * df1['precio']) + df1['limpiar'])/(df1['noches_min'] + df1['plazas'])
 print('El precio por persona es:')
-print(df1['precio_oer'])
+print(df1['precio_per'])
 
 '''
 2. Crear una función que reciba una lista de distritos y 
@@ -49,6 +52,7 @@ porcentaje(df, ['Centro', 'Salamanca'])
 devuelva un diccionario con el número de alojamientos que cada anfitrión ofrece en esos distrito, 
 ordenado de más a menos alojamientos.
 '''
+
 
 '''
 4. Crear una función que reciba devuelva un diccionario con el número medio de alojamientos por anfitrión de 
